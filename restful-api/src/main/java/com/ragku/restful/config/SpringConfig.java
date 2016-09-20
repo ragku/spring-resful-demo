@@ -36,7 +36,6 @@ public class SpringConfig {
     
     @Bean(name = "fastJsonHttpMessageConverter")
     public FastJsonHttpMessageConverter getFastJsonHttpMessageConverter() {
-        System.out.println("init fastJsonHttpMessageConverter");
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
         List<MediaType> tps = new ArrayList<MediaType>();
         tps.add(MediaType.APPLICATION_JSON_UTF8);
@@ -48,7 +47,6 @@ public class SpringConfig {
     public List<HttpMessageConverter<?>> getHttpMessageConverters() {
         List<HttpMessageConverter<?>> list = new ArrayList<HttpMessageConverter<?>>();
         list.add(fastJsonHttpMessageConverter);
-        System.out.println("init messageConverters");
         return list;
     }
 
@@ -59,7 +57,6 @@ public class SpringConfig {
     public RequestMappingHandlerAdapter getRequestMappingHandlerAdapter() {
         RequestMappingHandlerAdapter requestMappingHandlerAdapter = new  RequestMappingHandlerAdapter();
         requestMappingHandlerAdapter.setMessageConverters(messageConverters);
-        System.out.println("init RequestMappingHandlerAdapter");
         return requestMappingHandlerAdapter;
     }
 }
